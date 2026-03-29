@@ -10,6 +10,7 @@ On every agent loop cycle, scan all open pull requests.
 - PR is a draft → skip (wait until it's marked ready)
 - PR was opened by an agent → skip (avoid self-review loops)
 - PR is from a bot (dependabot, renovate, etc.) → label `needs-human`, skip
+- **PR has merge conflicts** (`mergeable = false`) → comment asking author to rebase, apply `needs-info` label, do NOT approve, skip remaining review steps entirely
 
 ## Review Steps
 
@@ -85,7 +86,7 @@ An `agent:approved` label means the PR passed automated review. **Only the maint
 
 ## Edge Cases
 
-- **PR has merge conflicts:** Comment asking the author to rebase. Do not approve until resolved.
+- **PR has merge conflicts:** Already handled as a skip condition above — never approve a PR with conflicts.
 - **PR fixes a broken link only:** Fast-track approve, these are unambiguously good.
 - **Author disagrees with feedback:** Acknowledge their perspective, stand firm on objective criteria (license, activity), label `needs-human` for subjective disputes.
 - **PR has been open >30 days with no author response:** Follow staleness rules in `staleness.md`.

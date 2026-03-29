@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Periodically discover new open-source AI projects worth adding to the list and open issues suggesting them.
+Periodically discover new open-source AI projects worth adding to the list and add them directly via a single PR.
 
 ## Frequency
 
-Run the research loop less frequently than triage/PR review — roughly once per week is sufficient. Do not run if you already opened a research issue in the last 7 days.
+Run once per week. Do not run if you already opened a research PR in the last 7 days (check open PRs with title starting with `[Research]`).
 
 ## Sources to Check
 
@@ -20,37 +20,34 @@ In order of priority:
 
 ## Qualification Criteria
 
-A project is worth suggesting if it meets **all** of the following:
+A project is worth adding if it meets **all** of the following:
 
 - OSI-approved license (or clearly open-weights with permissive use)
 - Last commit within 3 months
 - Genuine adoption signal: >200 GitHub stars, OR featured on HN/Reddit front page, OR cited in a notable paper
-- Not already in the list (search README before suggesting)
+- Not already in the list (search README before adding)
 - Fits an existing category in the README
 
-## How to Suggest
+## How to Add — Single PR
 
-Open a GitHub issue with:
-- **Title:** `[Research] Add: <Project Name>`
-- **Body:**
-  - Project name + GitHub URL
-  - One-sentence description
-  - License
-  - Stars + last commit date
-  - Suggested category
-  - Why it belongs (what makes it notable)
-  - Source where you found it
+**Do not open issues.** Instead, open **one PR** adding all qualified entries directly to README.md:
 
-Apply label `agent:suggested` to the issue.
+1. Clone/pull the repo locally
+2. Collect all qualifying candidates (max 5 per cycle)
+3. Add each to the correct section in README.md following the existing format
+4. Open a single PR titled `[Research] Add N new entries — <date>`
+5. PR body lists each addition with: name, link, license, stars, why it qualifies
+
+One PR per research cycle. Do not open individual issues or individual PRs per entry.
 
 ## Limits
 
-- Open at most **3 research issues per cycle** — avoid flooding the issue tracker
-- If you find more than 3 good candidates, pick the most notable ones
-- Do not suggest projects you've already suggested (check existing issues with `agent:suggested` label first)
+- Max **5 entries per PR**
+- Check existing open PRs with `[Research]` in the title — if one is already open and unmerged, do not open another
+- Do not add projects already suggested in an open unmerged PR
 
 ## Edge Cases
 
-- **Project is brand new (<1 week old) but clearly notable:** Still suggest it, note recency explicitly
-- **Project is from a major lab (Meta, Google, Microsoft) with open weights:** Strong signal, suggest it
-- **Project overlaps heavily with an existing entry:** Note the overlap in the issue, let the maintainer decide
+- **Project is brand new (<1 week old) but clearly notable:** Still add it, note recency in PR body
+- **Project overlaps with an existing entry:** Note the overlap in PR body, let the maintainer decide
+- **No qualifying projects found this cycle:** Do nothing — do not open an empty PR
